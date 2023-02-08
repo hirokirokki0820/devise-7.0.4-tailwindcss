@@ -3,7 +3,7 @@
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <div class="bg-white px-6 py-5 rounded-md">
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "users/shared/error_messages", resource: resource %>
       <%= f.hidden_field :reset_password_token %>
 
       <%# -------- パスワード -------- %>
@@ -35,7 +35,7 @@
       <div class="md:flex items-center md:justify-between">
         <%= f.submit "パスワードを変更する", class: "btn btn-sky"%>
         <div class="md:text-right text-sm">
-          <%= render "devise/shared/links" %>
+          <%= render "users/shared/links" %>
         </div>
       </div>
     </div>

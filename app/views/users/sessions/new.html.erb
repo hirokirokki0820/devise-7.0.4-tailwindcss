@@ -1,8 +1,8 @@
 <div class="mb-3 md:mt-10 md:w-2/3 md:mx-auto">
-  <h2 class="text-3xl mb-3 md:text-center"><%= icon_with_text("solid", "user-plus", "新規登録") %></h2>
+  <h2 class="text-3xl mb-3 md:text-center"><%= icon_with_text("solid", "arrow-right-to-bracket", "ログイン") %></h2>
 
-  <%= form_with model: @user, url: registration_path(resource_name), local: true, class: "bg-white px-6 py-5 rounded-md" do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @user, url: session_path(resource_name), local: true, class: "bg-white px-6 py-5 rounded-md" do |f| %>
 
     <%# -------- Eメールアドレス -------- %>
     <div class="mb-3">
@@ -30,24 +30,17 @@
       </div>
     </div>
 
-    <%# -------- パスワード（確認用） -------- %>
-    <div class="mb-5">
-      <%= f.label :password_confirmation, class: "font-semibold block p-1 required" %>
-      <div class="relative">
-        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-          <span class="text-gray-600">
-            <%= icon("solid", "lock") %>
-          </span>
-        </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+    <% if devise_mapping.rememberable? %>
+      <div class="mb-5">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "ログイン状態を保持する" %>
       </div>
-    </div>
+    <% end %>
 
     <div class="md:flex items-center md:justify-between">
-      <%= f.submit "登録する", class: "btn btn-sky mb-3 md:mb-0" %>
-      <%#= link_to icon_with_text("solid", "rotate-left", "キャンセル"), root_path, class: "btn btn-outline-gray" %>
+      <%= f.submit "ログイン", class: "btn btn-sky mb-3 md:mb-0" %>
       <div class="md:text-right text-sm">
-        <%= render "devise/shared/links" %>
+        <%= render "users/shared/links" %>
       </div>
     </div>
   <% end %>

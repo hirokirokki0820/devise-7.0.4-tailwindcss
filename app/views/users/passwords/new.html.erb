@@ -2,7 +2,7 @@
   <h2 class="text-3xl mb-3 md:text-center"><%= icon_with_text("solid", "lock", "パスワードの再設定") %></h2>
 
   <%= form_with model: @user, url: password_path(resource_name), local: true, class: "bg-white px-6 py-5 rounded-md", data: { turbo_method: :post } do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
     <%# -------- Eメールアドレス -------- %>
     <div class="mb-3">
@@ -20,7 +20,7 @@
     <div class="md:flex items-center md:justify-between">
       <%= f.submit "送信する", class: "btn btn-sky mb-3 md:mb-0" %>
       <div class="md:text-right text-sm">
-        <%= render "devise/shared/links" %>
+        <%= render "users/shared/links" %>
       </div>
     </div>
   <% end %>
